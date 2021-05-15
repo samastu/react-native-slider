@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 
 import PropTypes from 'prop-types';
+import { scale } from 'react-native-size-matters';
 
 const TRACK_SIZE = 4;
 const THUMB_SIZE = 20;
@@ -47,6 +48,10 @@ const DEFAULT_ANIMATION_CONFIGS = {
   //   deceleration : 0.997
   // }
 };
+
+const calc = (number) => {
+  return scale(number - (number / 10));
+}
 
 export default class Slider extends PureComponent {
   static propTypes = {
@@ -568,18 +573,18 @@ export default class Slider extends PureComponent {
 
 var defaultStyles = StyleSheet.create({
   container: {
-    height: 40,
+    height: calc(40),
     justifyContent: 'center',
   },
   track: {
-    height: TRACK_SIZE,
-    borderRadius: TRACK_SIZE / 2,
+    height: calc(TRACK_SIZE),
+    borderRadius: calc(TRACK_SIZE / 2),
   },
   thumb: {
     position: 'absolute',
-    width: THUMB_SIZE,
-    height: THUMB_SIZE,
-    borderRadius: THUMB_SIZE / 2,
+    width: calc(THUMB_SIZE),
+    height: calc(THUMB_SIZE),
+    borderRadius: calc(THUMB_SIZE / 2),
   },
   touchArea: {
     position: 'absolute',
